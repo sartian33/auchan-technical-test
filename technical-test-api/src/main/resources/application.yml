@@ -3,6 +3,14 @@ spring:
     name: technical-test-api
   main:
     web-application-type: reactive
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: customers
 
 server:
   port: 8080
+
+my:
+  property: MYPROPERTYYYYY

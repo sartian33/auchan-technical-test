@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h2>Add a customer</h2>
+    <form th:object="${customer}" th:action="@{/customer/add}" method="post">
+        <div>
+            <label for="lastName">Last name</label>
+            <input id="lastName" type="text" th:field="*{lastName}">
+        </div>
+        <div>
+            <label for="email">email</label>
+            <input id="email" type="email" th:field="*{email}">
+        </div>
+
+        <button type="submit">Add customer</button>
+    </form>
+
+</div>
+<div th:switch="${customers}">
+    <h2 th:case="null">No customers yet!!</h2>
+    <div th:case="*">
+        <h2>Customers</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="customer : ${customers}">
+                <td th:text="${customer.lastName}"></td>
+                <td th:text="${customer.email}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
